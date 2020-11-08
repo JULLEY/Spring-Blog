@@ -24,12 +24,16 @@ public class User {
 
     @Column(nullable = false, length = 30)
     private String username; // 아이디
+
     @Column(nullable = false, length = 100)
     private String password;
+
     @Column(nullable = false, length = 50)
     private String email;
+
     @ColumnDefault("'user'")
     private String role;    // admin, user, manager
+    
     @CreationTimestamp  // 시간자동입력
     private Timestamp createDate;
 }

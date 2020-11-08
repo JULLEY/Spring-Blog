@@ -35,7 +35,7 @@ public class Board {
     @JoinColumn(name="userId")
     private User user;  // FK
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER)  // mappedBy 연관관계의 주인이 아니다(난 FK가 아니다. 컬럼생성 하지마라) > SELECT JOIN할때만 사용
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER)  // mappedBy 연관관계의 주인이 아니다(난 FK가 아니다. 컬럼생성 하지마라) > SELECT JOIN할때만 사용한다.
     private List<Reply> reply;
 
     @CreationTimestamp
