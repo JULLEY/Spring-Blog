@@ -4,12 +4,16 @@ import com.leo.blog.model.RoleType;
 import com.leo.blog.model.User;
 import com.leo.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.function.Supplier;
+import org.springframework.data.domain.Pageable;
+import java.util.List;
+import org.springframework.data.domain.Sort;
 
 // html파일이 아니라 data를 리턴해주는 controller = RestController
 @RestController
@@ -18,8 +22,23 @@ public class DummyControllerTest {
     @Autowired // 의존성 주입(DI)
     private UserRepository userRepository;
 
+    // http://localhost:8000/blog/dummy/user
+    @GetMapping("/dummy/users")
+    public List<User> list(){
+        return userRepository.findAll();
+    }
+
+    // http://localhost:8000/blog/dummy/users
+    @GetMapping("/dummy/user")
+    public Page<User> pageList(@PageableDefault(size=2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+        Page<User> pagingUser = userRepository.findAll(pageable);
+
+        List<User> users = pagingUser.getContent();
+        return pagingUser;
+    }
+
     // {id} 주소로 파라미터를 전달 받을수있음
-    // http://localhost:8080/blog/dummy/user/{id}
+    // http://localhost:8000/blog/dummy/user/{id}
     @GetMapping("/dummy/user/{id}")
     public User detail(@PathVariable int id){
         // user/4을 찾으면 내가 데이터베이스에서 못찾아오게 되면 user가 null이 될 것 아냐?
