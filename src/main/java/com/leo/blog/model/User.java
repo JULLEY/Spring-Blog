@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Builder    // 빌더패턴
 @Entity // User 클래스가 MySql에 테이블 생성된다.
+// @DynamicInsert // insert시 null인 field를 지워준다
 public class User {
 
     @Id // primary key 선언
@@ -31,9 +32,11 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @ColumnDefault("'user'")
-    private String role;    // admin, user, manager
-    
+    // @ColumnDefault("user")
+    // DB는 RoleType이라는 게 없다.
+    @Enumerated(EnumType.STRING)
+    private RoleType role;    // admin, user, manager
+
     @CreationTimestamp  // 시간자동입력
     private Timestamp createDate;
 }
