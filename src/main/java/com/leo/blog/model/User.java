@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -24,6 +25,7 @@ public class User {
     private int id; // auto_increment , sequence
 
     @Column(nullable = false, length = 30)
+//    @UniqueElements
     private String username; // 아이디
 
     @Column(nullable = false, length = 100)
