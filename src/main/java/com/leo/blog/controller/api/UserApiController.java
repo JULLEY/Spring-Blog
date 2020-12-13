@@ -20,7 +20,7 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/api/user")
+    @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody User user){
       log.debug("UserApiController save 호출");
       System.out.println("UserApiController save 호출");
@@ -30,6 +30,8 @@ public class UserApiController {
     }
 
 
+
+    /* 기존 방법(시큐리티 사용으로 주석)
     @PostMapping("/api/user/login")
     public ResponseDto<Integer> login(@RequestBody User user, HttpSession session){
         log.debug("UserApiController login 호출");
@@ -40,4 +42,5 @@ public class UserApiController {
         }
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
+   */
 }

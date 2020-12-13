@@ -20,7 +20,7 @@ let index = {
         // ajax 호출시 default가 비동기 호출
         $.ajax({
             type: "POST",
-            url: "/api/user",
+            url: "/auth/joinProc",
             data: JSON.stringify(data), // http body
             contentType: "application/json; charset=utf-8", // body데이터 타입
             dataType: "json"    // 요청에 대한 서버의 응답이 왔을때 기본적으로 모든것이 문자열인데 JSON처럼 생겼으면 => javascript object로바꿔준다
@@ -30,8 +30,10 @@ let index = {
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-    },
-    login : function(){
+    }
+
+    /*  시큐리티 사용으로 주석
+    ,login : function(){
         // alert("save함수 호출 TEST");
         let data = {
             username : $("#username").val(),
@@ -51,7 +53,7 @@ let index = {
             alert(JSON.stringify(error));
         });
     }
-
+    */
 }
 
 index.init();

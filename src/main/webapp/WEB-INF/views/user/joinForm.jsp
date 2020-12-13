@@ -3,21 +3,21 @@
 <%@include file="../layout/header.jsp" %>
 
 <div class="container">
-    <form>
+    <form action="#" method="post">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="email" class="form-control" placeholder="Enter Username" id="username">
+            <input type="email" name="username" class="form-control" placeholder="Enter Username" id="username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" placeholder="Enter password" id="password">
+            <input type="password" name="password" class="form-control" placeholder="Enter password" id="password">
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" placeholder="Enter email" id="email">
+            <input type="email" name="email" class="form-control" placeholder="Enter email" id="email">
         </div>
+        <button type="button" id="btn-save" class="btn btn-primary">Submit</button>
     </form>
-    <button type="button" id="btn-save" class="btn btn-primary">Submit</button>
 </div>
 
 <script src="/js/user.js"></script>
