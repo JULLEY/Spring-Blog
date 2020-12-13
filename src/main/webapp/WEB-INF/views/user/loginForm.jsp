@@ -3,7 +3,7 @@
 <%@include file="../layout/header.jsp" %>
 
 <div class="container">
-    <form>
+    <form action="/auth/loginProc" method="post">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control" placeholder="Enter Username" id="username">
@@ -17,8 +17,8 @@
                 <input class="form-check-input" name="remember" type="checkbox"> Remember me
             </label>
         </div>
+        <button type="button" id="btn-login" class="btn btn-primary">Login</button>
     </form>
-    <button type="button" id="btn-login" class="btn btn-primary">Login</button>
 </div>
 
 <script src="/js/user.js"></script>
