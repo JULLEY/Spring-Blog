@@ -13,32 +13,36 @@ public class PrincipalDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return user.getUsername();
     }
 
+    // 계정이 만료되지 않았는지 리턴한다.(true : 만료안됨)
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
+    // 계정이 잠겨있지 않았는지 리턴한다.(true : 만료안됨)
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
+    // 비밀번호가 만료되지 않았는지 리턴한다.(true : 만료안됨)
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
+    // 계정이 활성화(사용가능)인지 리턴한다. (true : 활성화)
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override
