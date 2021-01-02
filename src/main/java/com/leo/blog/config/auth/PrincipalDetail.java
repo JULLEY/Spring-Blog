@@ -4,6 +4,7 @@ import com.leo.blog.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 // 스프링 시큐리티가 로그인 요청을 가로채서 로그인을 진행하고 완료가 되면 UserDetails 타입의 오브젝트를
@@ -47,6 +48,19 @@ public class PrincipalDetail implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Collection<GrantedAuthority> collectors = new ArrayList<>();
+
+        // 계정이 갖고있는 권한 목록을 리턴한다. (권한이 여러개 있을 수 있어서 루프를 돌아야 하는데 우리는 한개만)
+//        collectors.add(new GrantedAuthority() {
+//            @Override
+//            public String getAuthority() {
+//                return "ROLE_" + user.getRole();    // ex : ROLE_USER
+//            }
+//        });
+
+        // 위와 동일
+        collectors.add(() -> {return "ROLE_"+user.getRole();});
+
+        return collectors;
     }
 }
