@@ -1,5 +1,7 @@
 package com.leo.blog.config;
 
+import com.leo.blog.config.auth.PrincipalDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,6 +17,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)  // 특정 주소로 접근을 하면 권한 및 인증을 미리 체크한다.
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private PrincipalDetailService principalDetailService;
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
@@ -25,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // 같은 해쉬로 암호화하여 DB에 있는 해쉬랑 비교 가능
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(null).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(principalDetailService).passwordEncoder(bCryptPasswordEncoder());
     }
 
     @Override
