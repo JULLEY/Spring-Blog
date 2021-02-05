@@ -14,8 +14,8 @@
             <textarea class="form-control summernote" rows="5" id="content"></textarea>
         </div>
 
-        <button id="btn-save" class="btn btn-primary">글쓰기완료</button>
     </form>
+    <button id="btn-save" class="btn btn-primary">글쓰기완료</button>
 </div>
 
 <script>
