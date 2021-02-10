@@ -3,12 +3,14 @@
 <%@include file="layout/header.jsp" %>
 
 <div class="container">
-    <div class="card m-2">
-        <div class="card-body">
-            <h4 class="card-title">제목</h4>
-            <a href="javascript:void(0)" class="btn btn-primary">상세</a>
+    <c:forEach var="board" items="${boards}">
+        <div class="card m-2">
+            <div class="card-body">
+                <h4 class="card-title">${board.title}</h4>
+                <a href="javascript:void(0)" class="btn btn-primary">상세</a>
+            </div>
         </div>
-    </div>
+    </c:forEach>
 </div>
 
 <%@include file="layout/footer.jsp" %>
