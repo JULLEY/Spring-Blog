@@ -1,16 +1,14 @@
 package com.leo.blog.service;
 
 import com.leo.blog.model.Board;
-import com.leo.blog.model.RoleType;
 import com.leo.blog.model.User;
 import com.leo.blog.repository.BoardRepository;
-import com.leo.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 @Service
 public class BoardService {
@@ -25,7 +23,7 @@ public class BoardService {
         boardRepository.save(board);
     }
 
-    public List<Board> selectBoardList(){
-        return boardRepository.findAll();
+    public Page<Board> selectBoardList(Pageable pageable){
+        return boardRepository.findAll(pageable);
     }
 }
