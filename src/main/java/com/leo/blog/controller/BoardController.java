@@ -8,6 +8,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Controller
@@ -25,9 +26,21 @@ public class BoardController {
         return "index";
     }
 
+    @GetMapping("/board/{id}")
+    public String boardDetail(@PathVariable int id, Model model){
+        model.addAttribute("board" , boardService.selectBoardDetail(id));
+        return "board/detail";
+    }
+
     // USER 권한이 필요
     @GetMapping("/board/saveForm")
     public String saveForm(){
         return "board/saveForm";
+    }
+
+    @GetMapping("/board/{id}/updateForm")
+    public String updateForm(@PathVariable int id, Model model){
+        model.addAttribute("board", boardService.selectBoardDetail(id));
+        return "board/updateForm";
     }
 }
