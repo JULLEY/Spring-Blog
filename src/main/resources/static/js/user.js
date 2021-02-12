@@ -6,6 +6,9 @@ let index = {
         $("#btn-login").on("click", ()=>{    // function(){} , ()=>{} 사용 이유는 this를 바인딩하기위해서
             this.login();
         });
+        $("#btn-update").on("click", ()=>{    // function(){} , ()=>{} 사용 이유는 this를 바인딩하기위해서
+            this.update();
+        });
     },
     save : function(){
         // alert("save함수 호출 TEST");
@@ -26,6 +29,27 @@ let index = {
             dataType: "json"    // 요청에 대한 서버의 응답이 왔을때 기본적으로 모든것이 문자열인데 JSON처럼 생겼으면 => javascript object로바꿔준다
         }).done(function (res) {
             alert("회원가입이 완료되었습니다.");
+            location.href = "/";
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    },
+    update : function(){
+        let data = {
+            id : $("#id").val(),
+            username : $("#username").val(),
+            password : $("#password").val(),
+            email : $("#email").val(),
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: "/user",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).done(function (res) {
+            alert("회원수정이 완료되었습니다.");
             location.href = "/";
         }).fail(function (error) {
             alert(JSON.stringify(error));
