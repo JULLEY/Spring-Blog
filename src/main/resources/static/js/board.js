@@ -34,19 +34,16 @@ let index = {
         });
     },
     deleteById : function(){
-
         let id = $("#id").text();
 
         $.ajax({
             type: "DELETE",
             url: "/api/board/"+id,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8"
-        }).done(function (res) {
-            console.log(res)
+            dataType: "json"
+        }).done(function(resp){
             alert("삭제가 완료되었습니다.");
             location.href = "/";
-        }).fail(function (error) {
+        }).fail(function(error){
             alert(JSON.stringify(error));
         });
     },
