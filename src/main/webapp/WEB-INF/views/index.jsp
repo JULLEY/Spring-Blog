@@ -3,19 +3,29 @@
 <%@include file="layout/header.jsp" %>
 
 <div class="container">
-    <c:forEach var="board" items="${boards.content}">
+    <h1>ANDROID WEEKLY</h1>
+    <c:forEach var="info" items="${crawlingList}">
         <div class="card m-2">
             <div class="card-body">
-                <h4 class="card-title">${board.title}</h4>
-                <a href="/board/${board.id}" class="btn btn-primary">상세</a>
+                <a href="${info.link}" target="_blank"><img src="${info.imageUrl}"
+                                                            style="border: 1px solid #333333;
+                                                            height: auto;
+                                                            line-height: 100%;
+                                                            outline: none;
+                                                            text-decoration: none;
+                                                            display: inline;"/>
+                </a>
+                <br/>
+                <a class="article-headline" target="_blank" style="color:#0099CC; text-decoration: none; font-weight: bold;" href="${info.link}">
+                        ${info.title}
+                </a>
+                <p style="margin:0; line-height: 1.5em; font-size: 12px;">
+                    ${info.content}
+                </p>
             </div>
+
         </div>
     </c:forEach>
-
-    <ul class="pagination justify-content-center">
-        <li class="page-item ${boards.first ? 'disabled' : ''}"><a class="page-link" href="?page=${boards.number - 1}">Previous</a></li>
-        <li class="page-item ${boards.last ? 'disabled' : ''}"><a class="page-link" href="?page=${boards.number + 1}">Next</a></li>
-    </ul>
 </div>
 
 <%@include file="layout/footer.jsp" %>

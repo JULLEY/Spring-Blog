@@ -17,13 +17,11 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-//    @AuthenticationPrincipal PrincipalDetail principalDetail
-    @GetMapping({"", "/"})
-    public String index(Model model, @PageableDefault(size=3, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
-//        System.out.println("로그인 사용자 아이디 : " + principalDetail.getUsername());
-
+    @GetMapping("/board/list")
+    public String boardList(Model model, @PageableDefault(size=3, sort="id", direction = Sort.Direction.DESC) Pageable pageable){
         model.addAttribute("boards", boardService.selectBoardList(pageable));
-        return "index";
+
+        return "board/board";
     }
 
     @GetMapping("/board/{id}")

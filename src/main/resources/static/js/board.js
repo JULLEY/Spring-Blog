@@ -28,7 +28,7 @@ let index = {
             dataType: "json"    // 요청에 대한 서버의 응답이 왔을때 기본적으로 모든것이 문자열인데 JSON처럼 생겼으면 => javascript object로바꿔준다
         }).done(function (res) {
             alert("글쓰기가 완료되었습니다.");
-            location.href = "/";
+            location.href = "/board/list";
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -42,7 +42,7 @@ let index = {
             dataType: "json"
         }).done(function(resp){
             alert("삭제가 완료되었습니다.");
-            location.href = "/";
+            location.href = "/board/list";
         }).fail(function(error){
             alert(JSON.stringify(error));
         });
@@ -62,7 +62,7 @@ let index = {
             dataType: "json"
         }).done(function (res) {
             alert("글수정이 완료되었습니다.");
-            location.href = "/";
+            location.href = "/board/list";
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
