@@ -85,4 +85,9 @@ public class BoardService {
         int result = replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
         System.out.println("댓글저장 success cnt : "+result);
     }
+
+    @Transactional
+    public void replyDelete(int replyId) {
+        replyRepository.deleteById(replyId);
+    }
 }
