@@ -1,8 +1,10 @@
 package com.leo.blog.service;
 
+import com.leo.blog.dto.ReplySaveRequestDto;
 import com.leo.blog.model.Board;
 import com.leo.blog.model.User;
 import com.leo.blog.repository.BoardRepository;
+import com.leo.blog.repository.ReplyRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +19,9 @@ public class BoardService {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ReplyRepository replyRepository;
 
     @Transactional
     public void save(Board board, User user){
@@ -73,5 +78,11 @@ public class BoardService {
         board.setTitle(param.getTitle());
         board.setContent(param.getContent());
         // 해당 함수로 종료시(Service가 종료될 때) 트랜잭션이 종료. 이때 더티체킹 - 자동 업데이트가 됨. db flush (커밋이 된다)
+    }
+
+    @Transactional
+    public void replySave(ReplySaveRequestDto replySaveRequestDto) {
+        int result = replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+        System.out.println("댓글저장 success cnt : "+result);
     }
 }

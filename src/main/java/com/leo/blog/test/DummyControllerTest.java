@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cos.blog.model.RoleType;
-import com.cos.blog.model.User;
-import com.cos.blog.repository.UserRepository;
+import com.leo.blog.model.RoleType;
+import com.leo.blog.model.User;
+import com.leo.blog.repository.UserRepository;
 
 // html파일이 아니라 data를 리턴해주는 controller = RestController
 @RestController
