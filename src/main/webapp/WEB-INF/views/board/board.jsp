@@ -13,10 +13,12 @@
         </div>
     </c:forEach>
 
-    <ul class="pagination justify-content-center">
-        <li class="page-item ${boards.first ? 'disabled' : ''}"><a class="page-link" href="?page=${boards.number - 1}">Previous</a></li>
-        <li class="page-item ${boards.last ? 'disabled' : ''}"><a class="page-link" href="?page=${boards.number + 1}">Next</a></li>
-    </ul>
+    <c:if test="${not empty boards.content}">
+        <ul class="pagination justify-content-center">
+            <li class="page-item ${boards.first ? 'disabled' : ''}"><a class="page-link" href="?page=${boards.number - 1}">Previous</a></li>
+            <li class="page-item ${boards.last ? 'disabled' : ''}"><a class="page-link" href="?page=${boards.number + 1}">Next</a></li>
+        </ul>
+    </c:if>
 </div>
 
 <%@include file="../layout/footer.jsp" %>
