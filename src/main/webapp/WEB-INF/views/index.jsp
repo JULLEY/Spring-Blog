@@ -3,11 +3,11 @@
 <%@include file="layout/header.jsp" %>
 
 <div class="container">
-    <h1>ANDROID WEEKLY</h1>
+    <h1 class="display-4">ANDROID WEEKLY</h1>
     <c:forEach var="info" items="${crawlingList}">
         <div class="card m-2">
             <div class="card-body">
-                <a href="${info.link}" target="_blank"><img src="${info.imageUrl}"
+                <a href="${info.link}" target="_blank"><img src="${info.imageUrl}" claa="img-thumbnail"
                                                             style="border: 1px solid #333333;
                                                             height: auto;
                                                             line-height: 100%;

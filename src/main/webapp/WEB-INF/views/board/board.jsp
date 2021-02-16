@@ -3,12 +3,12 @@
 <%@include file="../layout/header.jsp" %>
 
 <div class="container">
-    <a href="/board/saveForm" class="btn btn-primary">글쓰기</a>
+    <a href="/board/saveForm" class="btn btn-outline-dark">글쓰기</a>
     <c:forEach var="board" items="${boards.content}">
         <div class="card m-2">
             <div class="card-body">
                 <h4 class="card-title">${board.title}</h4>
-                <a href="/board/${board.id}" class="btn btn-primary">상세</a>
+                <a href="/board/${board.id}" class="btn btn-dark">상세</a>
             </div>
         </div>
     </c:forEach>
