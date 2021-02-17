@@ -25,11 +25,22 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      use-new-id-generator-mappings: false  # false > jpa기본적략을따라가지 않는다
-    show-sql: true  # console에 실행되는 sql문 노출 여부
+      use-new-id-generator-mappings: false
+    show-sql: true
     properties:
       hibernate.format_sql: true
 
   jackson:
     serialization:
       fail-on-empty-beans: false
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google: # /oauth2/authorization/google 이 주소를 동작하게 한다.
+            client-id: 568471482619-re2ks60p60t8pj5asgn4d90m5im5sce1.apps.googleusercontent.com
+            client-secret: 6NNst1jydVspP7DMNibSCQ9M
+            scope:
+              - email
+              - profile
